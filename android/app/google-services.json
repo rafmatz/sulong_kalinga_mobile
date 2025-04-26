@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "682243357592",
+    "project_id": "sulongkalinga",
+    "storage_bucket": "sulongkalinga.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682243357592:android:5f55cb41ca3cb7d2f589ed",
+        "android_client_info": {
+          "package_name": "com.example.sulong_kalinga_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbK4AWgHE5tPwYtGpNGeAvtYj_VvpGZ4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

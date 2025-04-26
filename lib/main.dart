@@ -1,9 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:sulong_kalinga_mobile/screens/auth/login_screen.dart';
 import 'package:sulong_kalinga_mobile/screens/home/home_screen.dart';
 import 'package:sulong_kalinga_mobile/wrappers/auth_wrapper.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
-void main() {
+// --- Place the background handler at the top level ---
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  // Handle background notification
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://ikjjaoqecenwaookxudt.supabase.co', // <-- paste from dashboard
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlramphb3FlY2Vud2Fvb2t4dWR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NTUxNzQsImV4cCI6MjA2MTIzMTE3NH0.QGkBWnOJd0v6siaH5VvKxGFx1sYo6mCQ44wKIywgtF0', // <-- paste from dashboard
+  );
+  await Firebase.initializeApp();
+
+  // FCM setup
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  await messaging.requestPermission();
+  String? token = await messaging.getToken();
+  print('FCM Token: $token');
+  // TODO: Store this token in Supabase for the user
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    // Handle foreground notification
+    print('Received a foreground message: ${message.notification?.title}');
+  });
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   runApp(const MyApp());
 }
 
