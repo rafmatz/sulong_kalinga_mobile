@@ -15,8 +15,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://ikjjaoqecenwaookxudt.supabase.co', // <-- paste from dashboard
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlramphb3FlY2Vud2Fvb2t4dWR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NTUxNzQsImV4cCI6MjA2MTIzMTE3NH0.QGkBWnOJd0v6siaH5VvKxGFx1sYo6mCQ44wKIywgtF0', // <-- paste from dashboard
+    url: 'PASTE_FROM_SUPABASE', // <-- paste from dashboard
+    anonKey: 'PASTE_FROM_SUPABASE', // <-- paste from dashboard
   );
   await Firebase.initializeApp();
 
